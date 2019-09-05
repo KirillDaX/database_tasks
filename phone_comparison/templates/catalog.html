@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Сравнение телефонов</h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Модель:</p>
+                <p>Стоимость:</p>
+                <p>Операционная система:</p>
+                <p>Оперативная память:</p>
+                <p>Число пикселей на дюйм:</p>
+                <p>Двойная камера:</p>
+                <p>Процессор:</p>
+                <p>Разрешение экрана:</p>
+                <p>FM-Радио:</p>
+                <p>Дополнительно:</p>
+            </div>
+            {% for phone in phones %}
+            <div class="col">
+                <p><strong>{{ phone.model }}</strong></p>
+                <p>{{ phone.price }}</p>
+                <p>{{ phone.op_system }}</p>
+                <p>{{ phone.ram }}</p>
+                <p>{{ phone.dpi }}</p>
+                <p>{{ phone.double_cam|yesno:"есть, нет" }}</p>
+                <p>{{ phone.cpu }}</p>
+                <p>{{ phone.resolution }}</p>
+                <p>{{ phone.fm_radio|yesno:"есть, нет" }}</p>
+                <p>{{ phone.additionally }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
